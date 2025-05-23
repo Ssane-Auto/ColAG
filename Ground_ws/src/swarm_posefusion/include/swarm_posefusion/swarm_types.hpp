@@ -151,9 +151,13 @@ public:
   void kalmanUpdate(const Eigen::VectorXd measure)
   {
     Eigen::MatrixXd K = nowP * H.transpose() * (H * nowP * H.transpose() + R).inverse();
-    Eigen::VectorXd Z = H * nowX;
+    Eigen::VectorXd Z = H * nowX;    
     Eigen::VectorXd errorZ = (measure - Z);
 
+    // bound error in (-pi, pi]
+    while (errorZ > M_PI) errorZ -= M_PI*2;
+    while (errorZ <= -M_PI) errorZ += M_PI*2;
+    
     // 解决飘的很慢的情况 the measurement is slowly change
     Eigen::Vector3d change1 = (nowX - preX).segment<3>(0);
     Eigen::Vector3d change2 = (measure - preX).segment<3>(0);
