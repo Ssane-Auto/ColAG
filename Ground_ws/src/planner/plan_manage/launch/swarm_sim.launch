@@ -80,7 +80,7 @@
     <group ns="ugv_4" if="$(eval ugv_num>4)">
         <include file="$(find ego_planner)/launch/run_in_sim.launch">
             <arg name="self_id" value="4"/>
-            <arg name="uav_num" value="$(arg uav_num)eval"/>
+            <arg name="uav_num" value="$(arg uav_num)"/>
             <arg name="ugv_num" value="$(arg ugv_num)"/>
 
             <arg name="init_x" value="4.0"/>
