@@ -155,12 +155,20 @@ public:
     Eigen::VectorXd errorZ = (measure - Z);
 
     // bound error in (-pi, pi]
-    while (errorZ > M_PI) errorZ -= M_PI*2;
-    while (errorZ <= -M_PI) errorZ += M_PI*2;
+    //while (errorZ > M_PI) errorZ -= M_PI*2;
+    //while (errorZ <= -M_PI) errorZ += M_PI*2;
+    
+       for (int i = 0; i < errorZ.size(); ++i) {
+    while (errorZ(i) > M_PI) errorZ(i) -= 2 * M_PI;
+    while (errorZ(i) <= -M_PI) errorZ(i) += 2 * M_PI;
+}
     
     // 解决飘的很慢的情况 the measurement is slowly change
-    Eigen::Vector3d change1 = (nowX - preX).segment<3>(0);
-    Eigen::Vector3d change2 = (measure - preX).segment<3>(0);
+   Eigen::Vector3d change1 = (nowX - preX).segment<3>(0);
+   Eigen::Vector3d change2 = (measure - preX).segment<3>(0);
+   
+
+
     double change_theta = acosIn2PI(change1, change2);
     if (change1.norm() > 0.02)
     {
