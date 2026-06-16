@@ -109,6 +109,10 @@
     <param name="grid_map/send_update_range_y" value="2.5" />
     <param name="grid_map/send_update_range_z" value="0.7" />
 
+    <param name="grid_map/selfbox_x" value="0.6"/>
+    <param name="grid_map/selfbox_y" value="0.8"/>
+    <param name="grid_map/selfbox_z" value="0.40"/>
+
     <param name="grid_map/obstacles_inflation" value="$(arg obstacles_inflation)" />
     <param name="grid_map/obstacles_inflation_z" value= "$(arg obstacles_inflation_z)" />
 

@@ -52,6 +52,9 @@ void GridMap::initMap(ros::NodeHandle &nh)
   node_.param("grid_map/ground_height", mp_.ground_height_, 1.0);   //地图的z轴零点所在位置，
   node_.param("grid_map/odom_depth_timeout", mp_.odom_depth_timeout_, 1.0);
   node_.param("grid_map/self_id", self_id, 0);
+  node_.param("grid_map/selfbox_x", ugvbox_x_, 0.6);
+  node_.param("grid_map/selfbox_y", ugvbox_y_, 0.8);
+  node_.param("grid_map/selfbox_z", ugvbox_z_, 0.4);
 
   if( mp_.virtual_ceil_height_ - mp_.ground_height_ > z_size)
   {
