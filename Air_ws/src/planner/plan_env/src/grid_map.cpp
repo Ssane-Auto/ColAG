@@ -638,7 +638,7 @@ void GridMap::pubCallback(const ros::TimerEvent & /*event*/)
     
     sendmap.origin_x = mp_.map_origin_(0);
     sendmap.origin_y = mp_.map_origin_(1);
-    sendmap.origin_y = mp_.map_origin_(2);
+    sendmap.origin_z = mp_.map_origin_(2);
 
     sendmap.update_min_x = min_bound(0);
     sendmap.update_min_y = min_bound(1);
@@ -1192,4 +1192,3 @@ void GridMap::depthOdomCallback(const sensor_msgs::ImageConstPtr &img,
   md_.occ_need_update_ = true;
   md_.flag_use_depth_fusion = true;
 }
-
